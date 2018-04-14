@@ -1,0 +1,36 @@
+{
+  "name": "js_protractor",
+  "version": "1.0.0",
+  "description": "Project scheme for JS, Protractor, Cucumber, Jasmine",
+  "main": "index.js",
+  "scripts": {
+    "test:main": "protractor ./test/configurations/protractor.config.js",
+    "test:init": "npm i && webdriver-manager update && webdriver-manager start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mate0u/JS_Protractor.git"
+  },
+  "keywords": [
+    "JS",
+    "Protractor",
+    "Cucumber",
+    "Chai",
+    "Test"
+  ],
+  "author": "Mateusz Ulanczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mate0u/JS_Protractor/issues"
+  },
+  "homepage": "https://github.com/Mate0u/JS_Protractor#readme",
+  "devDependencies": {
+    "chai": "4.1.2",
+    "chai-as-promised": "7.1.1",
+    "cucumber": "4.2.1",
+    "protractor": "5.3.1"
+  },
+  "dependencies": {
+    "protractor-cucumber-framework": "5.0.0"
+  }
+}
