@@ -3,19 +3,20 @@ exports.config = {
 	specs: [
 		'../features/*.feature'
 	],
+	
 	// set to "custom" instead of cucumber.
 	framework: 'custom',
 	// path relative to the current config file
-	frameworkPath: require.resolve('protractor-cucumber-framework'),
+	frameworkPath: '../../node_modules/protractor-cucumber-framework',
 	// require feature files
 	cucumberOpts: {
 		/*	Include all file steps file, env file, hook file here	*/
 		require: [
-			'../steps_definition/*.js'
+			'../steps_definition/prepare_Chai.steps.js'
 		],
 		format: "summary"
 	},
-	multiCapabilities: [{
-		browserName: 'chrome'
-	}]
+	capabilities: {
+		'browserName': 'chrome'
+	}
 };
