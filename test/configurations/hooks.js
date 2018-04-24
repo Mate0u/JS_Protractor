@@ -56,6 +56,9 @@ const Hooks = function () {
             }
         });
 		callback();
-	});
+    });
+    
+
+    
 };
 module.exports = Hooks;
