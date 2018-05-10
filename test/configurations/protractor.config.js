@@ -8,6 +8,9 @@ exports.config = {
 	// path relative to the current config file
 	frameworkPath: '../../node_modules/protractor-cucumber-framework',
 	// require feature files
+	require: [
+		'../steps_definition/*.js'
+	],
 	cucumberOpts: {
 		/*	Include all file steps file, env file, hook file here	*/
 		require: [
