@@ -3,7 +3,6 @@ exports.config = {
 	specs: [
 		'../features/*.feature'
 	],
-	
 	// set to "custom" instead of cucumber.
 	framework: 'custom',
 	// path relative to the current config file
@@ -12,6 +11,7 @@ exports.config = {
 	cucumberOpts: {
 		/*	Include all file steps file, env file, hook file here	*/
 		require: [
+			// path to step definition
 			'../steps_definition/prepare_Chai.steps.js'
 		],
 		format: "summary"
