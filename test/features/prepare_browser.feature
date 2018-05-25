@@ -1,6 +1,7 @@
 Feature: Prepare browser to tests
 
-First open browser, check if is render.
+First open browser, and check if is render.
 
-    Scenario: Opened browser
-        Given    User open browser
+	Scenario: Opened browser
+		Given 	User open browser on google.com page
+		# When 	User search 'Han Solo' in 'google.com'
