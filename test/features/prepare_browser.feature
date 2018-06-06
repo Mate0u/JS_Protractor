@@ -1,7 +1,9 @@
 Feature: Prepare browser to tests
 
-First open browser, and check if is render.
+First open browser, check if is render.
+Search in google 'cucumber'.
 
-	Scenario: Opened browser
-		Given 	User open browser on google.com page
-		# When 	User search 'Han Solo' in 'google.com'
+Scenario: Opened browser
+	Given 	User open browser on 'https://www.google.com' page
+	When 	Search in google 'cucumber'
+	When 	Press Enter Key
