@@ -8,10 +8,13 @@ Given(/^User open browser on '(.*)' page$/, (pageURL) => {
 });
 When(/^Search in google '(.*)'$/, (value) => {
 	const inputField = element(by.id('lst-ib'));
-	// const searchButton = element(by.css('.ds:nth-child(1) .lsb'))
 	return inputField.sendKeys(value);	
-	// return browser.actions().sendKeys(protractor.Key.ENTER).perform();
 });
-When (/^Press Enter Key$/, () => {
+When(/^Press Enter Key$/, () => {
 	return browser.actions().sendKeys(protractor.Key.ENTER).perform();
+});
+Then(/^Firts result is '(.*)'$/, (value) => {
+	element(by.css(objects.firstResultCss)).getAttribute('Value').then((model) => {
+		expect(model).to.equal(value);
+	});
 });

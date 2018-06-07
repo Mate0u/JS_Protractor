@@ -6,4 +6,5 @@ Search in google 'cucumber'.
 Scenario: Opened browser
 	Given 	User open browser on 'https://www.google.com' page
 	When 	Search in google 'cucumber'
-	When 	Press Enter Key
+	And 	Press Enter Key
+	Then 	Firts result is 'https://cucumber.io/'

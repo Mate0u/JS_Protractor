@@ -8,15 +8,23 @@ exports.config = {
 	// path relative to the current config file
 	frameworkPath: '../../node_modules/protractor-cucumber-framework',
 	// require feature files
-	
+	require: [
+		'../steps_definition/*.js'
+	],
 	cucumberOpts: {
 		/*	Include all file steps file, env file, hook file here	*/
-		format: "summary",
 		require: [
-			'../steps_definition/*.js'
+			// path to step definition
+			'../steps_definition/prepare_Chai.steps.js'
 		],
+		format: "summary"
 	},
 	capabilities: {
 		'browserName': 'chrome'
-	}
+	},
+onPrepare() {
+	browser.ignoreSynchronization = true;
+	/*	Maximize browser before running test suites	*/
+	browser.driver.manage().window().maximize();
+},
 };
