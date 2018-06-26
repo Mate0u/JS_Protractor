@@ -10,7 +10,7 @@ When(/^Search in google '(.*)'$/, (value) => {
 	const inputField = element(by.id('lst-ib'));
 	return inputField.sendKeys(value);	
 });
-When(/^Press Enter Key$/, () => {
+When(/^As a User I press Enter Key$/, () => {
 	return browser.actions().sendKeys(protractor.Key.ENTER).perform();
 });
 Then(/^Firts result is '(.*)'$/, (value) => {

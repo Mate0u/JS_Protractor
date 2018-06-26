@@ -26,5 +26,7 @@ onPrepare() {
 	browser.ignoreSynchronization = true;
 	/*	Maximize browser before running test suites	*/
 	browser.driver.manage().window().maximize();
+		//set to true for non-angular stuff
+		browser.ignoreSynchronization = true
 },
 };
