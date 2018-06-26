@@ -3,18 +3,33 @@ const url = require('../configurations/url-data');
 const objects = require('../objects/prepare_chai.object.js');
 var {Given, When, Then} = require('cucumber');
 
+//reusable steps
 Given(/^User open browser on '(.*)' page$/, (pageURL) => {
 	return browser.driver.get(pageURL);
-});
-When(/^Search in google '(.*)'$/, (value) => {
-	const inputField = element(by.id('lst-ib'));
-	return inputField.sendKeys(value);	
 });
 When(/^As a User I press Enter Key$/, () => {
 	return browser.actions().sendKeys(protractor.Key.ENTER).perform();
 });
+
+//steps for Scenario: Opened google and search phrase
+When(/^Search in google '(.*)'$/, (value) => {
+	const inputField = element(by.id('lst-ib'));
+	return inputField.sendKeys(value);	
+});
 Then(/^Firts result is '(.*)'$/, (value) => {
-	element(by.css(objects.firstResultCss)).getAttribute('Value').then((model) => {
+	return element(by.css(objects.firstResultCss)).getText().then((model) => {
+		console.log(model);
+		expect(model).to.equal(value);
+	});
+});
+
+//steps for Scenario: Searching in browser
+When(/^As a User I want to search '(.*)'$/, (value) => {
+	const inputField = element(by.id(objects.searchFieldAPId));
+	return inputField.sendKeys(value);
+});
+Then(/^As a User I see item '(.*)'$/, (value) => {
+	return element(by.css(objects.firstItemNameAPCss)).getAttribute('Value').then((model) => {
 		expect(model).to.equal(value);
 	});
 });
