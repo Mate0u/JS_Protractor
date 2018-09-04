@@ -3,5 +3,6 @@ module.exports = {
 	buttonSearchValue: 'Szukaj w Google',
 	firstResultCss: 'link+ div .iUh30',
 	searchFieldAPCss: '#search_query_top',
-	firstItemNameAPCss: '#center_column .product-name'
+	firstItemNameAPCss: '#center_column .product-name',
+	searchFieldGoogleId: '#lst-ib'
 };

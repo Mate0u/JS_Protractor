@@ -1,7 +1,8 @@
 exports.config = {
 	seleniumAddress: 'http://localhost:4444/wd/hub',
 	specs: [
-		'../features/*.feature'
+		// '../features/*.feature'
+		'../features/prepare_browser.feature'
 	],
 	// set to "custom" instead of cucumber.
 	framework: 'custom',
@@ -15,7 +16,7 @@ exports.config = {
 		/*	Include all file steps file, env file, hook file here	*/
 		require: [
 			// path to step definition
-			'../steps_definition/prepare_Chai.steps.js'
+			'../steps_definition/*.js'
 		],
 		format: "summary"
 	},
@@ -27,6 +28,5 @@ onPrepare() {
 	/*	Maximize browser before running test suites	*/
 	browser.driver.manage().window().maximize();
 		//set to true for non-angular stuff
-		browser.ignoreSynchronization = true
 },
 };

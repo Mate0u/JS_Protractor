@@ -25,11 +25,18 @@ Then(/^Firts result is '(.*)'$/, (value) => {
 
 //steps for Scenario: Searching in browser
 When(/^As a User I want to search '(.*)'$/, (value) => {
-	const inputField = element(by.id(objects.searchFieldAPId));
+	const inputField = element(by.id(objects.searchFieldGoogleId));
 	return inputField.sendKeys(value);
 });
 Then(/^As a User I see item '(.*)'$/, (value) => {
 	return element(by.css(objects.firstItemNameAPCss)).getAttribute('Value').then((model) => {
 		expect(model).to.equal(value);
 	});
+});
+
+//step for searching item in shop
+When(/^As a User I want to search item '(.*)'$/, (value) => {
+	element(by.css(objects.searchFieldAPCss)).click();
+	const inputField = element(by.id(objects.searchFieldAPCss));
+	return inputField.sendKeys(value);
 });
