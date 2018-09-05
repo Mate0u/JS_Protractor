@@ -2,41 +2,59 @@ const expect = require('chai').expect;
 const url = require('../configurations/url-data');
 const objects = require('../objects/prepare_chai.object.js');
 var {Given, When, Then} = require('cucumber');
+var {setDefaultTimeout} = require('cucumber');
+setDefaultTimeout(60 * 1000);
 
-//reusable steps
 Given(/^User open browser on '(.*)' page$/, (pageURL) => {
 	return browser.driver.get(pageURL);
 });
 When(/^As a User I press Enter Key$/, () => {
 	return browser.actions().sendKeys(protractor.Key.ENTER).perform();
 });
-
-//steps for Scenario: Opened google and search phrase
 When(/^Search in google '(.*)'$/, (value) => {
 	const inputField = element(by.id('lst-ib'));
 	return inputField.sendKeys(value);	
 });
 Then(/^Firts result is '(.*)'$/, (value) => {
 	return element(by.css(objects.firstResultCss)).getText().then((model) => {
-		console.log(model);
 		expect(model).to.equal(value);
 	});
 });
-
-//steps for Scenario: Searching in browser
 When(/^As a User I want to search '(.*)'$/, (value) => {
 	const inputField = element(by.id(objects.searchFieldGoogleId));
 	return inputField.sendKeys(value);
 });
 Then(/^As a User I see item '(.*)'$/, (value) => {
-	return element(by.css(objects.firstItemNameAPCss)).getAttribute('Value').then((model) => {
+	return element(by.css(objects.firstItemNameAPCss)).getText().then((model) => {
 		expect(model).to.equal(value);
 	});
 });
-
-//step for searching item in shop
 When(/^As a User I want to search item '(.*)'$/, (value) => {
 	element(by.css(objects.searchFieldAPCss)).click();
-	const inputField = element(by.id(objects.searchFieldAPCss));
+	const inputField = element(by.css(objects.searchFieldAPCss));
 	return inputField.sendKeys(value);
+});
+When(/^As a User I click '(.*)'$/, (value) => {
+	element(by.css(objects.firstItemNameAPCss)).getText().then((model) => {
+		expect(model).to.equal(value);
+	});
+	return element(by.css(objects.firstItemNameAPCss)).click();
+});
+When(/^As a User I select '(.*)' color$/, (value) => {
+	return element(by.xpath('//*[@name="' + value + '"]')).click();
+});
+When(/^As a User I select '(.*)' size$/, (value) => {
+	element(by.css(objects.sizeSelectorCss)).click();
+	return element(by.xpath('//*[@title="' + value + '"]')).click();
+});
+When(/^As a User I select '(.*)' button$/, (value) => {
+	return element(by.css(objects.addToCartButtonCss)).click();
+});
+Then(/^User see '(.*)' information$/, (value) => {
+	var EC=protractor.ExpectedConditions;
+	browser.wait(EC.visibilityOf(element(by.css(objects.cartSuccesfullMessageCss))), 6000 ,"Custom Error Message");
+
+	return element(by.css(objects.cartSuccesfullMessageCss)).getText().then((model) => {
+		expect(model).to.contains(value);
+	});
 });
