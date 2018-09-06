@@ -34,6 +34,8 @@
 		"protractor-cucumber-framework": "5.0.0"
 	},
 	"dependencies": {
-		"jslint": "0.12.0"
+		"jslint": "0.12.0",
+		"protractor-browser-logs": "1.0.351",
+		"protractor-multiple-cucumber-html-reporter-plugin": "1.8.0"
 	}
 }

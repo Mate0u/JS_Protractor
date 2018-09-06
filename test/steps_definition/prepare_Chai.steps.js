@@ -48,7 +48,7 @@ When(/^As a User I select '(.*)' size$/, (value) => {
 	element(by.css(objects.sizeSelectorCss)).click();
 	return element(by.xpath('//*[@title="' + value + '"]')).click();
 });
-When(/^As a User I select '(.*)' button$/, (value) => {
+When(/^As a User I select 'Add to cart' button$/, () => {
 	return element(by.css(objects.addToCartButtonCss)).click();
 });
 Then(/^User see '(.*)' information$/, (value) => {

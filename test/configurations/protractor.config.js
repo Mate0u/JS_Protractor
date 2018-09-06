@@ -1,8 +1,8 @@
 exports.config = {
 	seleniumAddress: 'http://localhost:4444/wd/hub',
 	specs: [
-		// '../features/*.feature'
-		'../features/cartShoping.feature'
+		'../features/*.feature'
+		// '../features/cartShoping.feature'
 	],
 	// set to "custom" instead of cucumber.
 	framework: 'custom',
@@ -14,15 +14,28 @@ exports.config = {
 			// path to step definition
 			'../steps_definition/*.js'
 		],
-		format: "summary"
+		format: 'json:target/reports/results.json',
 	},
 	capabilities: {
 		'browserName': 'chrome'
 	},
-onPrepare() {
-	browser.ignoreSynchronization = true;
-	/*	Maximize browser before running test suites	*/
-	browser.driver.manage().window().maximize();
-		//set to true for non-angular stuff
-},
-};
+	plugins: [{
+		package: 'protractor-multiple-cucumber-html-reporter-plugin',
+		options: {
+			displayDuration: true,
+			removeOriginalJsonReportFile: true,
+			reportName: 'Post tests raport',
+			automaticallyGenerateReport: true,
+			removeExistingJsonReportFile: true,
+			pageFooter: '<div><p>Test automation</p></div>'
+		}
+	}],
+	onPrepare() {
+		browser.ignoreSynchronization = true;
+		/*	Maximize browser before running test suites	*/
+		browser.driver.manage().window().maximize();
+
+		//checking platform type
+		//TODO
+	}
+}
