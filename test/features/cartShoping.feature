@@ -15,5 +15,5 @@ Scenario: Adding item to cart
 	And 	As a User I select 'L' size 
 	And 	As a User I select 'Add to cart' button
 	Then 	User see 'Product successfully added to your shopping cart' information
-	# And 	User see 'Orange' color
-	# And 	User see 'L' size
+	And 	User see 'Orange' information about item in cart
+	And 	User see 'L' information about item in cart

@@ -1,9 +1,10 @@
 const expect = require('chai').expect;
 const url = require('../configurations/url-data');
 const objects = require('../objects/prepare_chai.object.js');
-var {Given, When, Then} = require('cucumber');
-var {setDefaultTimeout} = require('cucumber');
+const {Given, When, Then} = require('cucumber');
+const {setDefaultTimeout} = require('cucumber');
 setDefaultTimeout(60 * 1000);
+const EC = protractor.ExpectedConditions;
 
 Given(/^User open browser on '(.*)' page$/, (pageURL) => {
 	return browser.driver.get(pageURL);
@@ -51,10 +52,14 @@ When(/^As a User I select '(.*)' button$/, (value) => {
 	return element(by.css(objects.addToCartButtonCss)).click();
 });
 Then(/^User see '(.*)' information$/, (value) => {
-	var EC=protractor.ExpectedConditions;
 	browser.wait(EC.visibilityOf(element(by.css(objects.cartSuccesfullMessageCss))), 6000 ,"Custom Error Message");
-
 	return element(by.css(objects.cartSuccesfullMessageCss)).getText().then((model) => {
 		expect(model).to.contains(value);
 	});
 });
+Then(/^User see '(.*)' information about item in cart$/, (value) => {
+	return element(by.css(objects.cartSpecificationCss)).getText().then((model) => {
+		expect(model).to.contains(value);
+	});
+});
+

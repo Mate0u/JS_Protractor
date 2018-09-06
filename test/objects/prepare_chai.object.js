@@ -8,6 +8,7 @@ module.exports = {
 	verifingPageAutomationPracticeCss: 'h1',
 	sizeSelectorCss: '#group_1',
 	cartSuccesfullMessageCss: '.layer_cart_product h2',
-	addToCartButtonCss: '#add_to_cart span'
+	addToCartButtonCss: '#add_to_cart span',
+	cartSpecificationCss: '#layer_cart_product_attributes'
 
 };
