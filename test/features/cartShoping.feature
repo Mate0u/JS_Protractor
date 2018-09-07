@@ -10,7 +10,7 @@ Background: Background name: Searching element
 	And 	Name of item is displayed 'Faded Short Sleeve T-shirts'
 
 Scenario: Adding item to cart
-	When 	Click on AP page 'Faded Short Sleeve T-shirts'
+	When 	Click on first item on AP page 'Faded Short Sleeve T-shirts'
 	And 	Select on AP page 'Orange' color
 	And 	Select on AP page 'L' size 
 	And 	Select on AP page 'Add to cart' button
