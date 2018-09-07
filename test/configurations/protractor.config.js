@@ -1,8 +1,8 @@
 exports.config = {
 	seleniumAddress: 'http://localhost:4444/wd/hub',
 	specs: [
-		'../features/*.feature'
-		// '../features/cartShoping.feature'
+		// '../features/*.feature'
+		'../features/cartShoping.feature'
 	],
 	// set to "custom" instead of cucumber.
 	framework: 'custom',
