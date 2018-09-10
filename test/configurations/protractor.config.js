@@ -1,3 +1,9 @@
+const platform = require('platform');
+const fse = require('fs-extra');
+const path = require('path');
+const _ = require('lodash');
+const deviceInfo = require('./deviceInfo.js');
+
 exports.config = {
 	seleniumAddress: 'http://localhost:4444/wd/hub',
 	specs: [
@@ -16,8 +22,17 @@ exports.config = {
 		],
 		format: 'json:target/reports/results.json',
 	},
+	
 	capabilities: {
-		'browserName': 'chrome'
+		'browserName': 'chrome',
+		//protractor-multiple-cucumber-html-reporter-plugin
+		metadata: {
+			device: '' + platform.os,
+			platform: {
+				name: '' + deviceInfo.platformName(),
+				version: ''
+			}
+		}
 	},
 	plugins: [{
 		package: 'protractor-multiple-cucumber-html-reporter-plugin',
@@ -34,8 +49,17 @@ exports.config = {
 		browser.ignoreSynchronization = true;
 		/*	Maximize browser before running test suites	*/
 		browser.driver.manage().window().maximize();
-
+		/* Delete report directory	*/
+		fse.remove(path.resolve(__dirname, '../../target/reports/report'), (err) => {
+			if (err) {
+				throw err;
+			}
+			console.log('"target/reports/report" was deleted');
+		});
+	},
+	onComplete() {
 		//checking platform type
-		//TODO
+		const plat = platform.os;
+		const plat2 = platform.description;
 	}
 }
