@@ -7,8 +7,8 @@ const deviceInfo = require('./deviceInfo.js');
 exports.config = {
 	seleniumAddress: 'http://localhost:4444/wd/hub',
 	specs: [
-		// '../features/*.feature'
-		'../features/cartShoping.feature'
+		'../features/*.feature'
+		// '../features/cartShoping.feature'
 	],
 	// set to "custom" instead of cucumber.
 	framework: 'custom',
@@ -22,7 +22,6 @@ exports.config = {
 		],
 		format: 'json:target/reports/results.json',
 	},
-	
 	capabilities: {
 		'browserName': 'chrome',
 		//protractor-multiple-cucumber-html-reporter-plugin
@@ -39,7 +38,7 @@ exports.config = {
 		options: {
 			displayDuration: true,
 			removeOriginalJsonReportFile: true,
-			reportName: 'Post tests raport',
+			reportName: 'Report for github.com/Mate0u/JS_Protractor',
 			automaticallyGenerateReport: true,
 			removeExistingJsonReportFile: true,
 			pageFooter: '<div><p>Test automation</p></div>'
@@ -56,10 +55,5 @@ exports.config = {
 			}
 			console.log('"target/reports/report" was deleted');
 		});
-	},
-	onComplete() {
-		//checking platform type
-		const plat = platform.os;
-		const plat2 = platform.description;
 	}
 }

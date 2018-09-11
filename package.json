@@ -36,9 +36,7 @@
 	"dependencies": {
 		"fs-extra": "^7.0.0",
 		"jslint": "0.12.0",
-		"navigator": "^1.0.1",
-		"platform": "^1.3.5",
-		"protractor-browser-logs": "1.0.351",
+		"platform": "1.3.5",
 		"protractor-multiple-cucumber-html-reporter-plugin": "1.8.0"
 	}
 }
